@@ -1,0 +1,48 @@
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    border-bottom: 2px solid #000;
+    box-sizing: border-box;
+    background: rgba(0, 0, 0, 0.5);
+    background-image: radial-gradient( transparent 2px , #000 2px);
+    background-size: 4px 4px;
+    backdrop-filter: saturate(50%) blur(10px);
+    -webkit-backdrop-filter: saturate(50%) blur(10px);
+    z-index: 500;
+}
+
+/* 相关链接 */
+.links{
+    margin-left: 50px;
+}
+.links ul{
+    display: flex;
+    align-items: center;
+}
+.links ul li{
+    margin-right: 30px;
+}
+.links ul li a img{
+    height: 40px;
+}
+
+/* 导航栏 */
+header nav ul{
+    display: flex;
+    align-items: center;
+}
+header nav ul li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 50px;
+    color: #fff;
+    letter-spacing: 3px;
+    cursor: pointer;
+}

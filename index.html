@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小冀仔的个人空间</title>
+
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/time.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" href="css/theme.css">
+
+</head>
+<body>
+
+    <audio src="./sounds/Love_with_Marble_House.mp3" controls></audio>
+
+<div id="app">
+    <!-- loading -->
+    <div class="loading">
+        <div class="climbing">
+            <div class="box">   
+                <div class="cube"></div>
+            </div>
+        </div>
+        <div class="start">
+            <span>start</span>
+        </div>
+        <div class="isMobile">
+            暂不适配手机用户，请使用PC端以获得更好的体验。
+        </div>
+    </div>
+
+    <header>
+        <div class="links">
+            <ul>
+                <li>
+                    <a href="https://github.com/jichenhao163/home" target="_blank">
+                        <img src="images/icon/icon_GitHub.jpg">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <nav>
+            <ul>
+                <li>首页</li>
+                <li><a href="../history/index.html" target="_blank">纵横历史</a></li>
+                <li><a href="../tank/index.html#/main" target="_blank">坦克守护者</a></li>
+                <li><a href="" target="_blank">智能厨房</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--主题选项卡-->
+    <div class="module theme">
+        <ul>
+            <li>
+                <div class="item index">
+                </div>
+            </li>
+            <li>
+                <div class="item history" style="--clr:#f50076;--i:2;">
+                    <div class="outline"></div>
+                    <div id="earth" class="earth"></div>
+                    <div></div>
+                    <div class="space-between">
+                        <div class="imgs">
+                            <ul>
+                                <li><img src="images/index/history1.png"/></li>
+                                <li><img src="images/index/history2.png"/></li>
+                                <li><img src="images/index/history2.png"/></li>
+                            </ul>
+                        </div>
+                        <div class="title">
+                            <h2>纵横历史</h2>
+                            <p>横纵历史与今日，跨越过去与未来</p>
+                        </div>
+                        <div class="blank"></div>
+                    </div>
+                    <div class="bottom space-between">
+                        <ul>
+                            <li><span>三维地球</span></li>
+                            <li><span>沉浸历史</span></li>
+                            <li><span>维度切换</span></li>
+                        </ul>
+                        <div class="goto">
+                            <a href="../history/index.html" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item tank" style="--clr:#01e100;--i:3;">
+                    <div class="outline"></div>
+                    <div class="tankI"></div>
+                    <div></div>
+                    <div class="space-between">
+                        <div class="imgs">
+                            <ul>
+                                <li><img src="images/index/tank1.png"/></li>
+                                <li><img src="images/index/tank2.png"/></li>
+                                <li><img src="images/index/tank2.png"/></li>
+                            </ul>
+                        </div>
+                        <div class="title">
+                            <h2>坦克守护者</h2>
+                            <p>都市警察，惩恶扬善</p>
+                        </div>
+                        <div class="blank"></div>
+                    </div>
+                    <div class="bottom space-between">
+                        <ul>
+                            <li><span>物理计算</span></li>
+                            <li><span>随机地形</span></li>
+                            <li><span>动画特效</span></li>
+                        </ul>
+                        <div class="goto">
+                            <a href="../tank/index.html#/main" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="item kitchen" style="--clr:#d0ff00;--i:4;">
+                    <div class="outline"></div>
+                    <div class="kitchenI">
+                        <div class="fire"></div>
+                    </div>
+                    <div></div>
+                    <div class="space-between">
+                        <div class="imgs">
+                            <ul>
+                                <li><img src="images/index/building.png"/></li>
+                                <li><img src="images/index/building.png"/></li>
+                                <li><img src="images/index/building.png"/></li>
+                            </ul>
+                        </div>
+                        <div class="title">
+                            <h2>智能厨房</h2>
+                            <p>拒绝煮糊，你的AI智能小帮厨</p>
+                        </div>
+                        <div class="blank"></div>
+                    </div>
+                    <div class="bottom space-between">
+                        <ul>
+                            <li><span>食材管理</span></li>
+                            <li><span>菜谱大全</span></li>
+                            <li><span>AI智能</span></li>
+                        </ul>
+                        <div class="goto">
+                            <a target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="tips">
+            <div class="mouse-box">
+                <div class="mouse">
+                    <span class="scroll"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--http://www.webgl3d.cn/threejs/examples/#webgl_geometry_shapes-->
+    <div class="scene" id="scene"></div>
+
+        <script src="js/loading.js"></script>
+
+        <!--=======vue========-->
+        <script src="plugins/vue/vue.js"></script>
+
+        <!--=============threeJs===========-->
+        <script src="plugins/three/R_107/three.js"></script>
+        <script src="plugins/three/ConvexHull.js"></script>
+        <script src="plugins/three/R_107/BufferGeometryUtils.js"></script>
+        <script src="plugins/three/R_107/ParametricGeometries.js"></script>
+        <script src="plugins/three/R_107/ConvexGeometry.js"></script>
+        <script src="plugins/three/R_107/OrbitControls.js"></script>
+        <script src="plugins/three/dat.gui.min.js"></script>
+        <script src="plugins/three/threebsp.js"></script>
+
+        <!-- =============ECharts=========== -->
+        <script src="plugins/echarts/echarts.min.js"></script>
+        <script src="plugins/echarts/echarts-gl.min.js"></script>
+
+        <!-- =============Carousel=========== -->
+        <script src="plugins/carousel/index.js"></script>
+        <link rel="stylesheet" href="plugins/carousel/index.css">
+
+
+        <!-- 上面是环境，下面是使用 -->
+
+    <!--工具类-->
+    <script src="js/untils.js"></script>
+
+    <!--threeJs-->
+    <script src="js/common.js"></script>
+    <script src="js/mousemove.js"></script>
+    <script src="js/themeObserev.js"></script>
+    <script src="js/sounds.js"></script>
+    <script src="js/imageLoader.js"></script>
+    <script src="js/animate.js"></script>
+    <script src="js/scene.js"></script>
+    <script src="js/geometry/villa/geometry.js"></script>
+    <script src="js/geometry/street/geometry.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/index_history.js"></script>
+    <!-- <script src="js/test.js"></script> -->
+
+    <!--vue-->
+    <script src="js/vue_index.js"></script>
+
+</body>
+</html>

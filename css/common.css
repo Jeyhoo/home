@@ -1,0 +1,26 @@
+body{
+    position: relative;
+}
+#app{
+    position: relative;
+}
+
+.module{
+    position: fixed;
+}
+
+.flex{
+    display: flex;
+}
+.space-between{
+    display: flex;
+    justify-content: space-between;
+}
+
+:root{
+    --themeColor:#03e9f4;
+    --loadingBg:#333;
+    --loadingProgressBg:#696969;
+    --loadingNowBg:#dcdcdc;
+    --loadingThemeColor:#03e9f4;
+}

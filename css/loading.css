@@ -1,0 +1,146 @@
+.loading{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+}
+.loading::before{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 50%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: var(--loadingBg);
+    transition: 1s;
+}
+.loading::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 50%;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    background: var(--loadingBg);
+    transition: 1s;
+}
+.loading.hide{
+    animation: loadingHide 0.5s linear 1s 1 normal;
+    animation-fill-mode: forwards;
+}
+.loading.hide::before{
+    top: -50%;
+}
+.loading.hide::after{
+    top: 100%;
+}
+
+/* 加载方块 */
+.loading .climbing{
+    width: 100%;
+    position: relative;
+    z-index: 1100;
+    transform: translateX(-50px) rotate(-45deg);
+    transition: 1s;
+}
+.loading.hide .climbing{
+    opacity: 0;
+}
+
+.loading .box{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100px;
+    -webkit-box-reflect: below 1px linear-gradient(transparent,#0004);
+    animation: climbing-box .8s ease-in-out infinite;
+}
+@keyframes climbing-box {
+    0%{transform: translateX(0px);}
+    100%{transform: translateX(-100px);}
+}
+
+.loading .cube{
+    width: 100px;
+    height: 100px;
+    background: var(--loadingThemeColor);
+    box-shadow: 0 0 5px var(--loadingThemeColor),
+                0 0 25px var(--loadingThemeColor),
+                0 0 50px var(--loadingThemeColor),
+                0 0 100px var(--loadingThemeColor),
+                0 0 200px var(--loadingThemeColor);
+    animation: climbing-cube .8s ease-in-out infinite;
+    transform-origin: bottom right;
+    transform: rotate(0deg);
+}
+@keyframes climbing-cube {
+    0%{transform: rotate(0deg);}
+    60%{transform: rotate(90deg);}
+    65%{transform: rotate(85deg);}
+    70%{transform: rotate(90deg);}
+    75%{transform: rotate(87.5deg);}
+    80%,100%{transform: rotate(90deg);}
+}
+
+/* 开始文字 */
+.loading .start{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 20%;
+    z-index: 1200;
+    letter-spacing: 30px;
+    overflow: hidden;
+    transition: 1s;
+}
+.loading.hide .start{
+    opacity: 0;
+}
+.loading .start span{
+    color: #fff;
+    font-size: 30px;
+    transition: 2s;
+    transform: scale(10);
+    opacity: 0;
+    cursor: pointer;
+    user-select: none;
+}
+.loading .start span:hover{
+    color: var(--loadingThemeColor);
+    letter-spacing: 35px;
+}
+.loading.finished .start span{
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* 移动端检测 */
+.loading .isMobile{
+    display: none;
+}
+@media screen and (max-width:1000px) {
+    .loading .isMobile{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 50px;
+        position: fixed;
+        left: 0;
+        bottom: 20%;
+        z-index: 10000;
+    }
+    .loading .start{
+        display: none;
+    }
+}

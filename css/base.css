@@ -1,0 +1,35 @@
+*{margin: 0;padding: 0;text-decoration:none;list-style: none; color: #fff;user-select: none;}
+html, body {
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-size-adjust: none;
+    font-family: "微软雅黑";
+}
+img{border: none;}
+textarea{outline:medium;}
+button{outline:medium;}
+select{outline:medium;border: none}
+li{list-style-type: none}
+a{text-decoration: none;cursor: pointer}
+i{font-style:normal}
+
+audio{
+    display: none;
+}
+
+/*webGL专用样式*/
+html, body,.scene,#app{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.scene{
+    /*background: linear-gradient(#5ca4f6 1%,white 40%);*/
+    background: linear-gradient(#333 10%,#dcdcdc 60%);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}

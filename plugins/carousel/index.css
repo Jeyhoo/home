@@ -1,0 +1,78 @@
+.carousel{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+/* 轮播内容 */
+.carousel-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+/* 淡入淡出模式 */
+.carousel-container.fade li{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.carousel-container.fade li img{
+    width: 100%;
+    height: 100%;
+}
+.carousel-container.fade li.active{
+    display: block;
+    opacity: 1;
+    animation: carousel-container 0.5s linear 0s 1 normal;
+    animation-fill-mode: forwards;
+}
+@keyframes carousel-container {
+    0%{opacity: 0}
+    100%{opacity: 1}
+}
+
+/* 堆叠模式 */
+.carousel-container.stack li{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+}
+.carousel-container.stack li:nth-child(2){transform: translate(5px,-5px);}
+.carousel-container.stack li:nth-child(3){transform: translateX(10px,-10px);}
+.carousel-container.stack li img{
+    width: 100%;
+    height: 100%;
+}
+.carousel-container.stack li.active{
+    opacity: 1;
+}
+
+
+
+/* 索引按钮组 */
+.carousel-indexGroup{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.carousel-indexGroup li{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #fff;
+    transition: 0.3s;
+    margin: 0 15px;
+    cursor: pointer;
+}
+.carousel-indexGroup li.active{
+    background: rgb(63, 63, 213);
+}
