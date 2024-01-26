@@ -1,5 +1,6 @@
 function createStreet(){
     street.init();
+    //街灯
     streetLamp.init();
     //广告牌
     billboard.init();
@@ -109,9 +110,9 @@ let streetLamp = (function () {
             spotLight.shadow.mapSize.height = COMMON.mapSizeHeight;
             spotLight.name = 'streetLamp_spotLight';
             //光源位置复制品，以便看清位置
-            let spotLightGUI = streetLampConfig.lightGUI.mesh.clone();
-            spotLightGUI.position.copy(spotLight.position);
-            spotLightGUI.name='spotLightGUI';
+            // let spotLightGUI = streetLampConfig.lightGUI.mesh.clone();
+            // spotLightGUI.position.copy(spotLight.position);
+            // spotLightGUI.name='spotLightGUI';
             //光源照射方向
             const lightLampTarget = streetLampConfig.target.mesh.clone();
             lightLampTarget.position.set(streetLampConfig.target.position.x,streetLampConfig.target.position.y,streetLampConfig.target.position.z);
@@ -119,11 +120,11 @@ let streetLamp = (function () {
             spotLight.target = lightLampTarget;
 
             //光源--顶部
-            const pointLight = new THREE.PointLight("#fff",1,50,1);
-            pointLight.position.set(0,40,0);
-            pointLight.name = 'streetLamp_pointLight';
-            const pointLightGUI = streetLampConfig.lightGUI.mesh.clone();
-            pointLightGUI.position.copy(pointLight.position);
+            // const pointLight = new THREE.PointLight("#fff",1,50,1);
+            // pointLight.position.set(0,40,0);
+            // pointLight.name = 'streetLamp_pointLight';
+            // const pointLightGUI = streetLampConfig.lightGUI.mesh.clone();
+            // pointLightGUI.position.copy(pointLight.position);
 
             group.add(bottom);
             group.add(top);
@@ -132,9 +133,9 @@ let streetLamp = (function () {
             group.add(lightTop_cover);
             group.add(lightTop);
             group.add(spotLight);
-            group.add(pointLight);
-            group.add(spotLightGUI);
-            group.add(pointLightGUI);
+            // group.add(pointLight);
+            // group.add(spotLightGUI);
+            // group.add(pointLightGUI);
             group.add(lightLampTarget);
             return group
         },
@@ -188,7 +189,7 @@ let billboard = (function () {
 
             let light_1 = this.createLight();light_1.position.set(-24,31,3.5);
             let light_2 = this.createLight();light_2.position.set(-15,28,3.5);
-            let light_3 = this.createLight();light_3.position.set(-5,32,3.5);
+            let light_3 = this.createLight(true);light_3.position.set(-5,32,3.5);
             let light_4 = this.createLight();light_4.position.set(5,29,3.5);
             let light_5 = this.createLight();light_5.position.set(15,30,3.5);
             let light_6 = this.createLight();light_6.position.set(24,32,3.5);
@@ -224,18 +225,21 @@ let billboard = (function () {
 
             return group
         },
-        createLight(){
+        createLight(flag){
             let color = COMMON.getColorRandom();
             let group = new THREE.Group();
             let baisc = new THREE.Mesh(new THREE.SphereGeometry(1),new THREE.MeshBasicMaterial({color:color}));
-            let light = new THREE.PointLight(color,1,50,1);
-            light.shadow.camera.near = -1;
-            light.shadow.camera.far = 1;
-            light.shadow.camera.left = -1;
-            light.shadow.camera.right = 1;
+            if(flag){
+                let light = new THREE.PointLight(color,1,50,1);
+                light.shadow.camera.near = -1;
+                light.shadow.camera.far = 1;
+                light.shadow.camera.left = -1;
+                light.shadow.camera.right = 1;
+                group.add(light)
+            }
+           
             color.castShadow = true;
             group.add(baisc)
-            group.add(light)
             return group
         }
     }
@@ -333,21 +337,21 @@ let trees = (function () {
             group.add(this.tree(50,0,50));
             group.add(this.tree(-20,0,50));
             group.add(this.tree(-70,0,50));
-            group.add(this.tree(-110,0,50));
+            // group.add(this.tree(-110,0,50));
 
             // 右侧的树
             group.add(this.tree(145,0,50));
-            group.add(this.tree(145,0,0));
+            // group.add(this.tree(145,0,0));
             group.add(this.tree(145,0,-50));
-            group.add(this.tree(145,0,-100));
+            // group.add(this.tree(145,0,-100));
             group.add(this.tree(145,0,-145));
 
             // 左侧的树
             group.add(this.tree(-145,0,50));
             group.add(this.tree(-145,0,0));
-            group.add(this.tree(-145,0,-50));
-            group.add(this.tree(-145,0,-100));
-            group.add(this.tree(-145,0,-145));
+            // group.add(this.tree(-145,0,-50));
+            // group.add(this.tree(-145,0,-100));
+            // group.add(this.tree(-145,0,-145));
 
             group.position.set(0,0,0);
             scene.add(group)
@@ -430,9 +434,9 @@ let carPark = (function () {
             group.add(this.createCarPark(100,0.7,-50,Math.PI*0.5));
             group.add(this.createCarPark(100,0.7,-15,Math.PI*0.5));
             //房子后面
-            group.add(this.createCarPark(30,0.7,-120,-Math.PI));
-            group.add(this.createCarPark(-5,0.7,-120,-Math.PI));
-            group.add(this.createCarPark(-40,0.7,-120,-Math.PI));
+            // group.add(this.createCarPark(30,0.7,-120,-Math.PI));
+            // group.add(this.createCarPark(-5,0.7,-120,-Math.PI));
+            // group.add(this.createCarPark(-40,0.7,-120,-Math.PI));
             group.position.set(0,0,0);
 
             scene.add(group)
@@ -472,8 +476,8 @@ let garden = (function () {
             let group = new THREE.Group();
 
             //栅栏
-            group.add(this.createFence(false,50,10,-100,5,30,fenceImg_front,4));
-            group.add(this.createFence(false,50,10,-100,5,-70,fenceImg_front,4));
+            // group.add(this.createFence(false,50,10,-100,5,30,fenceImg_front,4));
+            // group.add(this.createFence(false,50,10,-100,5,-70,fenceImg_front,4));
             group.add(this.createFence(true,100,10,-75,5,-20,fenceImg_side,8));
             group.add(this.createFence(true,100,10,-125,5,-20,fenceImg_side,8));
 
@@ -486,17 +490,17 @@ let garden = (function () {
             group.add(this.createRegion(-100,1,0));
             group.add(this.createRegion(-115,1,0));
 
-            group.add(this.createRegion(-85, 1,-20));
-            group.add(this.createRegion(-100,1,-20));
-            group.add(this.createRegion(-115,1,-20));
+            // group.add(this.createRegion(-85, 1,-20));
+            // group.add(this.createRegion(-100,1,-20));
+            // group.add(this.createRegion(-115,1,-20));
 
-            group.add(this.createRegion(-85, 1,-40));
-            group.add(this.createRegion(-100,1,-40));
-            group.add(this.createRegion(-115,1,-40));
+            // group.add(this.createRegion(-85, 1,-40));
+            // group.add(this.createRegion(-100,1,-40));
+            // group.add(this.createRegion(-115,1,-40));
 
-            group.add(this.createRegion(-85, 1,-60));
-            group.add(this.createRegion(-100,1,-60));
-            group.add(this.createRegion(-115,1,-60));
+            // group.add(this.createRegion(-85, 1,-60));
+            // group.add(this.createRegion(-100,1,-60));
+            // group.add(this.createRegion(-115,1,-60));
             group.position.set(0,0,0);
 
             scene.add(group);
@@ -536,25 +540,25 @@ let garden = (function () {
             soil.position.set(0,0.5,0)
 
             //花草
-            let points = [
-                new THREE.Vector3(0,0,0),
-                new THREE.Vector3(-0.3,1,0),
-                new THREE.Vector3(0.1,2,0.3),
-            ]
-            let path = new THREE.CatmullRomCurve3(points);
-            const rhizome = createMesh(new THREE.TubeGeometry(path,2,0.1,8),new THREE.MeshLambertMaterial({color:'#006400',side:THREE.DoubleSide,}));
-            let petal = createMesh(new THREE.IcosahedronGeometry(0.5),new THREE.MeshLambertMaterial({color:'#FF0080',side:THREE.DoubleSide}));
-            petal.scale.set(1,1.5,1);
-            petal.position.set(0.1,2,0.3)
-            let leaf = createMesh(new THREE.PlaneGeometry(1,1),new THREE.MeshLambertMaterial({side:THREE.DoubleSide,map:flowerLeaf,transparent:true}));
-            leaf.position.set(-0.7,1,0);
-            leaf.rotation.set(Math.PI*0.5,0,-Math.PI*0.25);
+            // let points = [
+            //     new THREE.Vector3(0,0,0),
+            //     new THREE.Vector3(-0.3,1,0),
+            //     new THREE.Vector3(0.1,2,0.3),
+            // ]
+            // let path = new THREE.CatmullRomCurve3(points);
+            // const rhizome = createMesh(new THREE.TubeGeometry(path,2,0.1,8),new THREE.MeshLambertMaterial({color:'#006400',side:THREE.DoubleSide,}));
+            // let petal = createMesh(new THREE.IcosahedronGeometry(0.5),new THREE.MeshLambertMaterial({color:'#FF0080',side:THREE.DoubleSide}));
+            // petal.scale.set(1,1.5,1);
+            // petal.position.set(0.1,2,0.3)
+            // let leaf = createMesh(new THREE.PlaneGeometry(1,1),new THREE.MeshLambertMaterial({side:THREE.DoubleSide,map:flowerLeaf,transparent:true}));
+            // leaf.position.set(-0.7,1,0);
+            // leaf.rotation.set(Math.PI*0.5,0,-Math.PI*0.25);
 
             group.add(frame);
             group.add(soil);
-            group.add(rhizome);
-            group.add(petal);
-            group.add(leaf);
+            // group.add(rhizome);
+            // group.add(petal);
+            // group.add(leaf);
             group.position.set(x,y,z);
 
             return group
@@ -574,7 +578,7 @@ let yardLight = (function () {
         init:function () {
             let group = new THREE.Group();
             group.add(this.createYardLight(60,5,-90));
-            group.add(this.createYardLight(-60,5,-90));
+            // group.add(this.createYardLight(-60,5,-90));
             scene.add(group);
         },
         createYardLight:function (x,y,z) {
@@ -590,14 +594,14 @@ let yardLight = (function () {
             let light = createMesh(new THREE.BoxGeometry(2.8,13.5,2.8),new THREE.MeshBasicMaterial({color:'#fff'}));
             light.position.set(0,11.75,0);
 
-            let lightPillar1 = createMesh(new THREE.BoxGeometry(0.5,13.5,0.5),lightMaterial);
-            lightPillar1.position.set(1.25,11.75,1.25);
-            let lightPillar2 = createMesh(new THREE.BoxGeometry(0.5,13.5,0.5),lightMaterial);
-            lightPillar2.position.set(1.25,11.75,-1.25);
-            let lightPillar3 = createMesh(new THREE.BoxGeometry(0.5,13.5,0.5),lightMaterial);
-            lightPillar3.position.set(-1.25,11.75,1.25);
-            let lightPillar4 = createMesh(new THREE.BoxGeometry(0.5,13.5,0.5),lightMaterial);
-            lightPillar4.position.set(-1.25,11.75,-1.25);
+            // let lightPillar1 = createMesh(new THREE.BoxGeometry(0.5,13.5,0.5),lightMaterial);
+            // lightPillar1.position.set(1.25,11.75,1.25);
+            // let lightPillar2 = createMesh(new THREE.BoxGeometry(0.5,13.5,0.5),lightMaterial);
+            // lightPillar2.position.set(1.25,11.75,-1.25);
+            // let lightPillar3 = createMesh(new THREE.BoxGeometry(0.5,13.5,0.5),lightMaterial);
+            // lightPillar3.position.set(-1.25,11.75,1.25);
+            // let lightPillar4 = createMesh(new THREE.BoxGeometry(0.5,13.5,0.5),lightMaterial);
+            // lightPillar4.position.set(-1.25,11.75,-1.25);
 
             // let _pointLight = new THREE.PointLight('#fff',0.1);
 
@@ -605,10 +609,10 @@ let yardLight = (function () {
             group.add(lightTop);
             group.add(light);
             // group.add(_pointLight);
-            group.add(lightPillar1);
-            group.add(lightPillar2);
-            group.add(lightPillar3);
-            group.add(lightPillar4);
+            // group.add(lightPillar1);
+            // group.add(lightPillar2);
+            // group.add(lightPillar3);
+            // group.add(lightPillar4);
 
             group.position.set(x||0,y||0,z||0);
 

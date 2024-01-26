@@ -48,8 +48,8 @@ scene.add(ambientLight);
 const sun = new THREE.DirectionalLight(Sun.color,Sun.intensity);
 sun.position.set(Sun.position.x,Sun.position.y,Sun.position.z);
 
-sun.shadow.mapSize.width = 2048;
-sun.shadow.mapSize.height = 2048;
+sun.shadow.mapSize.width = 1024;
+sun.shadow.mapSize.height = 1024;
 // directionalLight.shadow.mapSize.width = 3000;
 // directionalLight.shadow.mapSize.height = 3000;
 sun.shadow.camera.left = -500;

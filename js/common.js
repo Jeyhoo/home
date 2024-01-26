@@ -13,8 +13,8 @@ const COMMON = {
     initDur:1.5,
 
     //阴影分辨率
-    mapSizeWidth : 2048,
-    mapSizeHeight : 2048,
+    mapSizeWidth : 1024,
+    mapSizeHeight : 1024,
 
     getColorRandom:function () {
         return 'rgb(' + parseInt(Math.random()*255) + ',' + parseInt(Math.random()*255) + ',' +parseInt(Math.random()*255) +')';
