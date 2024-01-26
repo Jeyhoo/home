@@ -128,7 +128,7 @@
 .loading .isMobile{
     display: none;
 }
-@media screen and (max-width:1000px) {
+@media screen and (max-width:800px) {
     .loading .isMobile{
         display: flex;
         align-items: center;

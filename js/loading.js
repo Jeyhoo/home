@@ -5,15 +5,13 @@ function setLoadingProgress(value){
     try{
         loadingProgress = value || loadingProgress;
         if(value >= 100){
+            //加载完成
             value = 100;
             const loadingDom = document.querySelector(".loading");
             loadingDom.classList.add("finished");
+            //点击开始
             document.querySelector(".start").addEventListener("click",()=>{
-                loadingDom.classList.add("hide");
-                setTimeout(()=>{
-                    loadingDom.remove();
-                    setMouseTips();
-                },1000)
+                start(loadingDom)
             })
         }
     }catch(e){
@@ -23,4 +21,15 @@ function setLoadingProgress(value){
 
 function getLoadingProgress(){
     return loadingProgress
+}
+
+//开始函数
+function start(loadingDom){
+    //隐藏loading
+    loadingDom.classList.add("hide");
+    //删除loading
+    setTimeout(()=>{
+        loadingDom.remove();
+        setMouseTips();
+    },1000)
 }

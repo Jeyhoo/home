@@ -103,22 +103,26 @@ const FPS = 40;
 const FPSInterval = 1000 / FPS
 let lastTime = new Date().getTime();
 function renderScene() {
-    let nowTime = new Date().getTime();
-    if((nowTime - lastTime) >= FPSInterval){
-        lastTime = nowTime;
-        renderer.render(scene,camera);
-        animate(clock.getElapsedTime(),clock.getDelta());
-    }else{
-        
-    }
-    requestAnimationFrame(renderScene);
 
-    // requestAnimationFrame(renderScene);
-    // renderer.render(scene,camera);
-    // animate(clock.getElapsedTime(),clock.getDelta());
-   
-    // animate();
+    // requestIdleCallback(idle=>{
+    //     console.log(idle.timeRemaining())
+    //     if(idle.timeRemaining() > 0){
+            let nowTime = new Date().getTime();
+            if((nowTime - lastTime) >= FPSInterval){
+                lastTime = nowTime;
+                renderer.render(scene,camera);
+                animate(clock.getElapsedTime(),clock.getDelta());
+                requestAnimationFrame(renderScene);
+            }else{
+                requestAnimationFrame(renderScene);
+            }
+    //     }else{
+    //         requestAnimationFrame(renderScene);
+    //     }
+    // })
+    
 }
+//开启循环渲染
 renderScene();
 
 

@@ -10,23 +10,15 @@
 
 //优化高量级任务
 requestIdleCallback(idle=>{
-    initScene(idle)
+    /**
+     * 别墅创建
+     */
+    createVilla();
+    /**
+     * 街道创建
+     */
+    createStreet();    
 })
-
-function initScene(idle){
-    // if(idle.timeRemaining() > 0){
-        /**
-         * 别墅创建
-         */
-        createVilla();
-        /**
-         * 街道创建
-         */
-        createStreet();    
-    // }
-    // requestIdleCallback(initScene)
-}
-
 
 scene.traverse(function (obj) {
     // console.log(obj)

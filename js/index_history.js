@@ -1,5 +1,5 @@
-window.addEventListener("load",()=>{
-    //加载地球
+ //加载地球
+function initHistoryEarth(){
     const ROOT_PATH = "images/index_history"
     let option = {
         backgroundColor: 'rgba(0,0,0,0)',
@@ -38,12 +38,12 @@ window.addEventListener("load",()=>{
             }
         }
     };
-    
-    echarts.init(document.getElementById("earth")).setOption(option);
 
-    //加载轮播图
-    let carousel = new Carousel({
-        type:"stack"
-    });
-    carousel.init();
+    requestIdleCallback(idle=>{
+        echarts.init(document.getElementById("earth")).setOption(option);
+    })
+}
+
+window.addEventListener("load",()=>{
+    initHistoryEarth();
 })
