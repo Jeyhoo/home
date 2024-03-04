@@ -392,6 +392,76 @@
 .theme > ul > li .item.index{
     background: none;
 }
+/* 核平世界 */
+.theme .warchess .warchessI{
+    width: 170px;
+    height: 150px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    /* background: red; */
+    transform: translate(10%,-50%);
+    display: flex;
+    flex-wrap: wrap;
+}
+.theme .warchess .warchessI .warchessI-item{
+    display: block;
+    width: 80px;
+    height: 70px;
+    margin-right: 3px;
+    position: relative;
+}
+.theme .warchess .warchessI .warchessI-item span{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-position: center center;
+    background-size: 60% 50%;
+    background-repeat: no-repeat;
+    clip-path: polygon(50% 0% , 100% 25% , 100% 75% , 50% 100% , 0% 75% , 0% 25%); 
+    background-color: green;
+    transform: scaleY(1.35);
+    position: relative;
+    z-index: 20;
+}
+.theme .warchess .warchessI .warchessI-item::after{
+    content: "";
+    display: block;
+    position: absolute;
+    left: -3px;
+    top: 3px;
+    width: 100%;
+    height: 100%;
+    background: #333;
+    z-index: -1;
+    clip-path: polygon(50% 0% , 100% 25% , 100% 75% , 50% 100% , 0% 75% , 0% 25%); 
+    transform: scaleY(1.35);
+}
+.theme .warchess .warchessI .warchessI-item + .warchessI-item +.warchessI-item span{
+    transform: translateX(50%) scaleY(1.35);
+}
+.theme .warchess .warchessI .warchessI-item  + .warchessI-item +.warchessI-item::after{
+    transform: translateX(50%) scaleY(1.35);
+}
+.theme .warchess .warchessI .warchessI-item:nth-child(1){
+    animation: warchessI-1 3s linear 0s infinite normal;
+}
+.theme .warchess .warchessI .warchessI-item:nth-child(2){
+    animation: warchessI-1 3s linear 0.3s infinite normal;
+}
+.theme .warchess .warchessI .warchessI-item:nth-child(3){
+    animation: warchessI-1 3s linear 0.6s infinite normal;
+}
+.theme .warchess .warchessI .warchessI-item:nth-child(4){
+    animation: warchessI-1 3s linear 0.9s infinite normal;
+}
+@keyframes warchessI-1 {
+    0%{opacity: 0;transform: translate(30px,-10px);}
+    30%{opacity: 1;transform: translate(0,0);}
+    90%{opacity: 1;transform: translate(0,0);}
+    91%{opacity: 0;transform: translate(0,0);}
+    100%{opacity: 0;transform: translate(0,0);}
+}
 
 /* 纵横历史 */
 .theme .history .earth{
